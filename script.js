@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 游戏板初始化
+    // 游戏初始化变量
     const gameBoard = document.getElementById('game-board');
     const scoreDisplay = document.getElementById('score');
     const bestScoreDisplay = document.getElementById('best-score');
@@ -17,6 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ];
+
+    // 创建游戏格子
+    function createGameBoard() {
+        gameBoard.innerHTML = '';
+        for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 4; col++) {
+                const cell = document.createElement('div');
+                cell.id = `cell-${row}-${col}`;
+                cell.className = 'cell';
+                gameBoard.appendChild(cell);
+            }
+        }
+    }
 
     // 初始化游戏
     function initGame() {
@@ -295,12 +308,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 新游戏按钮点击事件
-    newGameButton.addEventListener('click', initGame);
+    // 新游戏按钮点击事件，修改为刷新页面
+    newGameButton.addEventListener('click', function() {
+        location.reload(); // 刷新页面
+    });
 
     // 再玩一次按钮点击事件
-    retryButton.addEventListener('click', initGame);
+    retryButton.addEventListener('click', function() {
+        location.reload(); // 刷新页面
+    });
 
-    // 初始化游戏
+    // 初始化游戏板和游戏
+    createGameBoard();
     initGame();
 });
