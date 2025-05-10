@@ -5,18 +5,26 @@
     touch-action: manipulation;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* 防止上下滑动 */
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #fafafa;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 .container {
     width: 100%;
     max-width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
 
@@ -80,9 +88,10 @@ h1 {
 }
 
 .game-container {
-    position: relative;
-    width: 100%;
-    height: 450px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .game-board {
@@ -250,10 +259,6 @@ h1 {
     .instructions {
         font-size: 14px;
         padding: 10px;
-    }
-
-    .game-container {
-        height: 350px;
     }
 
     .cell {
